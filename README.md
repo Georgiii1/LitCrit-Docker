@@ -2,15 +2,17 @@
 
 Проектът ми се състои от 2 основни компонента: front-end, Apache webserver + php и MySQL база данни.
 ## Структура на проекта
+```
 litcrit-docker/
-├── Dockerfile #PHP + Apache и MySQL образ с нужните разширения
-├── docker-compose.yml # Описание на услугите: web и db
-├── index.php # Начален файл на уеб приложението
+├── Dockerfile - PHP + Apache и MySQL образ с нужните разширения
+├── docker-compose.yml - Описание на услугите: web и db
+├── index.php - Начален файл на уеб приложението
 ├── src/
 │ └── database/
-│ ├── config.php # Конфигурация за свързване към базата данни
-│ └── litCrit-dataexport.sql # SQL скрипт за инициализиране на базата данни
+│ ├── config.php  Конфигурация за свързване към базата данни
+│ └── litCrit-dataexport.sql - SQL скрипт за инициализиране на базата данни
 └── ... други PHP файлове
+```
 
 ## Описание на отделните компоненити
 ### PHP + Apache Web
