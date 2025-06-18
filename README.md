@@ -70,3 +70,10 @@ docker compose up --build
 docker compose down -v
 ```
 
+## Теглене от Docker hub
+```bash
+docker pull georgi21207/litcrit-docker 
+docker run -p 3000:3000 georgi21207/litcrit-docker 
+```
+
+
