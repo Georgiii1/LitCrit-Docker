@@ -1,0 +1,23 @@
+{
+    "name": "vendor/litcrit",
+    "description": "This setup is for school project",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Georgiii1",
+            "email": "143806600+Georgiii1@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "openai-php/client": "^0.12.0",
+        "symfony/http-client": "^7.2",
+        "nyholm/psr7": "^1.8",
+        "guzzlehttp/guzzle": "^7.9"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

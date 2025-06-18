@@ -1,0 +1,21 @@
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootPass
+      MYSQL_DATABASE: LitCrit2
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./src/database/litCrit-dataexport.sql:/docker-entrypoint-initdb.d/litCrit-dataexport.sql
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - db
+
+volumes:
+  db_data:

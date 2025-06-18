@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ЛитКрит - Начало</title>
+    <link rel="icon" href="pictures/logo-ico.ico" type="image/x-icon">
+
+</head>
+
+
+<body>
+    <link href="fontawesome-6.7.2/css/fontawesome.css" rel="stylesheet" />
+<link href="fontawesome-6.7.2/css/brands.css" rel="stylesheet" />
+<link href="fontawesome-6.7.2/css/solid.css" rel="stylesheet" />
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="fonts/AdventPro/css2.css?family=Advent+Pro:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<!--
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    -->
+
+<!--
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="fonts/Caveat/css2.css?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+
+
+<link href="bootstrap-5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<link rel="stylesheet" href="./styles/styles.css">
+
+<script src="jQuery-3.2.1/jquery-3.2.1.min.js"></script>
+
+
+
+<div id="loginPopup" class="popup">
+    <div class="popup-content">
+
+        <span class="close-btn" onclick="togglePopup()">&times;</span>
+
+        <!-- SIGNUP FORM BEGIN -->
+        <form id="signupForm" class="signup-form" method="post" enctype="multipart/form-data">
+
+            <div class="pfp-image-upload profile-picture profile-picture-signup">
+                <input type="file" id="imageUpload" name="profilePicture" accept="image/*" hidden>
+                <label for="imageUpload" class="image-drop-area">
+                    <img id="previewImage" class="edit-image" src="images/usersPfp/default-edit-profile-picture.png"
+                        alt="Профилна снимка">
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Потребителско име:</label>
+                <input type="text" id="username" name="username" placeholder="Въвеждане..">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Имейл:</label>
+                <input type="email" id="email" name="email" placeholder="Въвеждане..">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Парола:</label>
+                <input type="password" id="password" name="password" placeholder="Въвеждане..">
+            </div>
+
+            <div class="form-group">
+                <label for="password-2">Потвърждение на парола:</label>
+                <input type="password" id="password-2" name="password-2" placeholder="Въвеждане..">
+            </div>
+
+            <button type="submit" name="signUp" class="btn-forms">Регистрация</button>
+
+            <div class="link-container">
+                <a href="javascript:void(0)" class="change-form-btn" onclick="toggleForms()">Вече имате профил?</a>
+            </div>
+        </form>
+        <!-- SIGNUP FORM END -->
+
+
+
+        <!-- LOGIN FORM BEGIN -->
+        <form id="loginForm" method="post" style="display: none;" class="login-form">
+
+
+            <div class="form-group">
+                <label for="username">Потребителско име:</label>
+                <input type="text" id="username" name="username" placeholder="Въвеждане..">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Парола:</label>
+                <input type="password" id="password" name="password" placeholder="Въвеждане..">
+            </div>
+
+            <button type="submit" name="logIn" class="btn-forms">Вход</button>
+
+            <div class="link-container">
+                <a href="javascript:void(0)" class="change-form-btn" onclick="toggleForms()">Нямате профил?</a>
+            </div>
+        </form>
+        <!-- LOGIN FORM END -->
+
+    </div>
+</div>
+
+
+
+<script>
+    function togglePopup() {
+        const popup = document.getElementById('loginPopup');
+        popup.style.display = popup.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function toggleForms() {
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+
+
+        loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+        signupForm.style.display = signupForm.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+
+
+
+<!-- onclick="togglePopup()" -->
+
+<!-- Header 1 -->
+<div class="row header">
+
+  <div class="col-xl-3 col-lg-2">
+    <a href="index.php"><img src="pictures/logo.png" alt="logo" style="width: 40%; height: 40%;"></a>
+  </div>
+
+  <div class="col-xl-4 col-lg-4">
+    <form id="searchForm" method="POST" autocomplete="off">
+      <div style="position:absolute;">
+        <button class="search-btn" type="submit" style="position:relative; left:-32px; top:8px;">
+          <i class="fa-solid fa-magnifying-glass fa-xl" style="color:#d45414;"></i>
+        </button>
+      </div>
+      <input class="search-input" id="searchInput" name="search" type="text" autocomplete="off" placeholder="Търсене..">
+      <div id="searchResults" class="search-results-container" style="display:none;"></div>
+    </form>
+  </div>
+
+
+  <div class="col-xl-5 col-lg-6">
+    <div class="dropdown-profile">
+      <button class="dropbtn"><img width="44.5" style="border-radius: 50%; position:relative; left:-0.2px;"
+          src="images/usersPfp/default-profile-picture.png"></button>
+      <div class="drop-content">
+        <a href="index.php">Начало</a>
+        <a href="my-reviews.php" onclick="togglePopup(); return false;" >Моите
+          отзиви</a> <!-- togglePopup if the user is not logged in and don't open page-->
+        <a href="my-books.php" onclick="togglePopup(); return false;" >Моите
+          книги</a> <!-- togglePopup if the user is not logged in-->
+        <a href="account.php" onclick="togglePopup(); return false;" >Профил</a>
+              </div>
+    </div>
+
+
+
+    <div class="dropdown-genres">
+      <button class="dropbtn"><i class="fa-solid fa-book-open fa-rotate-by fa-xl"
+          style="color: #d45414; --fa-rotate-angle: 3deg;"></i></button>
+      <div class="drop-content">
+
+                  <a href="book-genres.php?genreID=1">Поезия</a>
+                  <a href="book-genres.php?genreID=2">Проза</a>
+                  <a href="book-genres.php?genreID=3">Роман</a>
+                  <a href="book-genres.php?genreID=4">Детска Литература</a>
+                  <a href="book-genres.php?genreID=5">Романтика</a>
+                  <a href="book-genres.php?genreID=6">Комедия</a>
+                  <a href="book-genres.php?genreID=7">Криминалистика</a>
+                  <a href="book-genres.php?genreID=8">Фантастика</a>
+        
+      </div>
+    </div>
+
+    <div class="btn-add-book">
+
+
+
+      <!-- show login/signup popup -->
+      <a href="add-book.php">
+        <button class="add-book-btn"  onclick="togglePopup(); return false;"           data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom"
+          title="Добавете книга"><i class="fa-solid fa-plus fa-xl" style="color: #d45414;"></i></button>
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Header 2 -->
+<div class="row header2">
+
+  <nav class="navbar navbar-expand-lg navcustom2">
+    <div class="container-fluid fluidcustom2">
+
+      <div class="col-xl-3 col-lg-3 navcustom">
+        <a href="./index.php"><img class="header2-logo" src="pictures/logo.png" alt="logo"></a>
+
+        <div class="navbar-toggler-button" id="mobilebtn">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+      </div>
+            <div class="collapse navbar-collapse collapse2" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Жанрове
+            </a>
+            <ul class="dropdown-menu">
+                              <li>
+                  <a class="dropdown-item" href="book-genres.php?genreID=1">
+                    Поезия                  </a>
+                </li>
+                              <li>
+                  <a class="dropdown-item" href="book-genres.php?genreID=2">
+                    Проза                  </a>
+                </li>
+                              <li>
+                  <a class="dropdown-item" href="book-genres.php?genreID=3">
+                    Роман                  </a>
+                </li>
+                              <li>
+                  <a class="dropdown-item" href="book-genres.php?genreID=4">
+                    Детска Литература                  </a>
+                </li>
+                              <li>
+                  <a class="dropdown-item" href="book-genres.php?genreID=5">
+                    Романтика                  </a>
+                </li>
+                              <li>
+                  <a class="dropdown-item" href="book-genres.php?genreID=6">
+                    Комедия                  </a>
+                </li>
+                              <li>
+                  <a class="dropdown-item" href="book-genres.php?genreID=7">
+                    Криминалистика                  </a>
+                </li>
+                              <li>
+                  <a class="dropdown-item" href="book-genres.php?genreID=8">
+                    Фантастика                  </a>
+                </li>
+                          </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="add-book.php"                 onclick="togglePopup(); return false;" >Добавете книга</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              За мен
+            </a>
+
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="index.php">Начало</a></li>
+              <li><a class="dropdown-item" href="my-reviews.php" onclick="togglePopup(); return false;" >Моите
+                  отзиви</a></li>
+              <!-- togglePopup if the user is not logged in and don't open page-->
+              <li><a class="dropdown-item" href="my-books.php" onclick="togglePopup(); return false;" >Моите
+                  книги</a></li>
+              <!-- togglePopup if the user is not logged in and don't open page-->
+              <li><a class="dropdown-item" href="account.php" onclick="togglePopup(); return false;" >Профил</a></li>
+              <!-- togglePopup if the user is not logged in and don't open page-->
+              <li>
+                              </li>
+            </ul>
+          </li>
+
+        </ul>
+
+
+        <form class="d-flex" id="navbarSearchForm" role="search" method="POST" autocomplete="off"
+          style="position:relative;">
+          <div style="position:absolute;">
+            <button class="search-btn" type="submit" style="position:relative; left:-5px; top: 8px;">
+              <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #d45414;"></i>
+            </button>
+          </div>
+          <input class="search-input" id="navbarSearchInput" name="search" type="text" placeholder="Търсене..."
+            autocomplete="off" style="margin-left: 29px;">
+          <div id="navbarSearchResults" class="search-results-container"
+            style="display:none; position:absolute; top:40px; left:0; z-index:9999; width:100%;"></div>
+        </form>
+        <script>
+          var X = false;
+          function setupSearchBar(inputSelector, resultsSelector, formSelector) {
+            const $input = $(inputSelector);
+            const $results = $(resultsSelector);
+            const $form = $(formSelector);
+
+            function renderResults(data) {
+              $results.empty().append('<div class="search-section-title">Книги</div>');
+              if (data.success && data.books.length) {
+                data.books.forEach(book => {
+                  $results.append(`
+                    <div class="search-result-item" data-id="${book.bookID}">
+                      <img src="${book.bookCover}" alt="${book.bookTitle}" class="book-image">
+                      <div class="book-info">
+                        <a href="book-details.php?id=${book.bookID}" class="book-title">${book.bookTitle}</a>
+                        <p class="book-author">от ${book.bookAuthor}</p>
+                      </div>
+                    </div>
+                  `);
+                });
+              } else {
+                $results.append('<div class="no-results">Няма книги съвпадащи с вашето търсене.</div>');
+              }
+              $results.show();
+            }
+
+            $input.on('input', function () {
+              if (!X) {
+                setTimeout(() => {
+                  X = false;
+                  const query = $input.val().trim();
+                  if (query.length < 2) return $results.hide().empty();
+                  $.get('elements/get_search_results.php', { q: query }, renderResults, 'json');
+                }, 2000);
+              }
+
+            });
+
+            $results.on('mousedown', '.search-result-item', function () {
+              window.location = 'book-details.php?id=' + $(this).data('id');
+            });
+
+            $(document).on('mousedown', function (e) {
+              if (!$(e.target).closest(formSelector).length) $results.hide();
+            });
+
+            $form.on('submit', function (e) {
+              e.preventDefault();
+              $input.trigger('input');
+            });
+          }
+
+          $(function () {
+            setupSearchBar('#searchInput', '#searchResults', '#searchForm');
+            setupSearchBar('#navbarSearchInput', '#navbarSearchResults', '#navbarSearchForm');
+          });
+        </script>
+
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- headers JS -->
+  <script>
+    let lastScrollTop = 0;
+    const header = document.querySelector('.header');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll > lastScrollTop) {
+        header.style.transform = 'translateY(-100%)';
+      } else {
+        header.style.transform = 'translateY(0)';
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+
+
+    let lastScrollTop2 = 0;
+    const header2 = document.querySelector('.header2');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll2 = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll2 > lastScrollTop2) {
+        header2.style.transform = 'translateY(-100%)';
+      } else {
+        header2.style.transform = 'translateY(0)';
+      }
+
+      lastScrollTop2 = currentScroll2 <= 0 ? 0 : currentScroll2;
+    });
+  </script>
+
+</div>
+    <div class="container-fluid">
+        <div class="row motto-row">
+            <div class="col-xl-12">
+
+                <div class="carousel">
+                    <div class="carousel-inner index-photo-inner">
+                        <div>
+                            <img src="pictures/index-photo.jpg" class="d-block w-100 index-photo" alt="...">
+                            <div class="carousel-caption d-md-block">
+                                <h5 class="index-title">ЛитКрит</h5>
+                                <p class="index-motto">Открий следващата си любима книга</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+                <div class="row most-popular">
+            <div class="col-xl-12">
+                <h2 class="categories-h">Най-популярни</h2>
+
+
+                <!-- slider1 : big -->
+                <h3 style='text-align: center;'> Все още няма добавени книги. </h3>        </div>
+
+        <br>
+        <br>
+        <br>
+
+                <div class="row suggested">
+            <div class="col-xl-12">
+                <h2 class="categories-h">Препоръчани за Вас</h2>
+
+                <!-- slider2 : big -->
+                <h3 style='text-align: center;'> Все още няма добавени книги. </h3>        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+        <div class="row new">
+        <div class="col-xl-12">
+            <h2 class="categories-h">Нови</h2>
+
+            <!-- slider3 : big -->
+
+            <h3 style='text-align: center;'> Все още няма добавени книги. </h3>    
+          </div>
+
+  </div>
+    <div class="row footer">  
+<footer class="footer-content">
+
+    <!-- Section: Social media -->
+    <section class="social-media-container">
+
+      <div class="socials-text">
+        
+        <a href="#" class="back-to-top-btn" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Назад">
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 16 16">
+            <path d="M3.204 11h9.592L8 5.519zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659"/>
+          </svg>
+          
+        </a>  
+      
+        <span class="socials-text-2">Къде можете да ни откриете: </span>
+      </div>
+  
+
+      <div>
+        <a href="#" class="social-icons">
+            <i class="fab fa-google socials-icon" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Google"></i>
+        </a>
+
+        <a href="#" class="social-icons">
+          <i class="fab fa-facebook-f socials-icon" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Facebook"></i>
+        </a>
+
+        <a href="#" class="social-icons">
+          <i class="fab fa-instagram socials-icon" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Instagram"></i>
+        </a>
+      </div>
+       
+    </section>
+
+    <hr>
+  
+
+    <!-- Section: About us  -->
+    <section class="about-us">
+      <div class="about-us-container">
+
+        <div class="row mt-3">
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+            <h6 class="footer-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+                    <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+                </svg>
+                
+                За нас: 
+            </h6>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto voluptatem odit beatae cupiditate animi veniam sint officiis atque pariatur aperiam! Ex exercitationem voluptatem labore explicabo neque velit quod quia unde?
+            </p>
+          </div>
+
+  
+
+        <!-- Contacts -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+            <h6 class="footer-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+                  </svg>
+                  Контакти
+            </h6>
+
+            <p>
+    
+              <a href=mailto:“info@example.com” class="fas fa-envelope contacts-icons" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Изпратете съобщение" style= "font-size:12px;">   info@example.com</a>
+            </p>
+
+            <p>
+              <a href=callto:“+ 359 00 000 0000”  class="fas fa-phone contacts-icons " data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Обадете се" style="font-size: 12px;">   + 359 00 000 0000</a>
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  
+    <!-- Copyright -->
+    <div class="copyright-section">
+     © 2025 Copyright:
+      <a class="copyright-text" href="#">LitCrit.bg</a>
+      ® All rights reserved 
+    </div>
+
+  </footer>
+  
+</div>
+
+
+
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+</script>
+
+
+   <!-- Profile Picture Upload JS ? --> 
+   <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const previewImage = document.getElementById('previewImage');
+        const dropAreaPFP = document.querySelector('.image-drop-area');
+
+        imageUpload.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                  // alert(1);
+                    previewImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        dropAreaPFP.addEventListener('dragover', function (e) {
+            e.preventDefault();
+            dropAreaPFP.classList.add('dragging');
+        });
+
+        dropAreaPFP.addEventListener('dragleave', function () {
+            dropAreaPFP.classList.remove('dragging');
+        });
+
+        dropAreaPFP.addEventListener('drop', function (e) {
+            e.preventDefault();
+            dropAreaPFP.classList.remove('dragging');
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+  
+    </div>
+
+</body>
+
+</html>

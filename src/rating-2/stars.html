@@ -1,0 +1,54 @@
+<style>
+  .rating {
+    display: inline-block;
+  }
+
+  .rating input {
+    display: none;
+  }
+
+  .rating label {
+    float: right;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .rating label:before {
+    content: "\2605"; /* Unicode star character */
+    font-size: 30px;
+  }
+
+  .rating input:checked ~ label {
+    color: #ffca08;
+  }
+</style>
+
+<div class="rating" style="display: flex; align-items: center;">
+    <div style="display: flex; flex-direction: row-reverse;">
+        <input type="radio" name="rating" id="star-5" value="5" />
+        <label for="star-5" title="5 stars"></label>
+        <input type="radio" name="rating" id="star-4" value="4" />
+        <label for="star-4" title="4 stars"></label>
+        <input type="radio" name="rating" id="star-3" value="3" />
+        <label for="star-3" title="3 stars"></label>
+        <input type="radio" name="rating" id="star-2" value="2" />
+        <label for="star-2" title="2 stars"></label>
+        <input type="radio" name="rating" id="star-1" value="1" />
+        <label for="star-1" title="1 star"></label>
+    </div>
+    <div class="score" style="margin-left: 12px;">Няма оценка</div>
+</div>
+<script>
+  const score = document.querySelector(".score");
+
+  const ratings = document.querySelectorAll(".rating input");
+
+  ratings.forEach((rating) => {
+    rating.addEventListener("change", () => {
+      const selectedRating = rating.value;
+      const text = selectedRating == 1 ? "звезда" : "звезди";
+
+      score.textContent = `${selectedRating} ${text}`;
+    });
+  });
+</script>

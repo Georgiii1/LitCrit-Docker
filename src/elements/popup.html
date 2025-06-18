@@ -1,0 +1,60 @@
+
+    <style>
+      .popup{
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #ffffff;
+        border: 1px solid #ccc;
+        border-left: 5px solid #4caf50;
+        padding: 16px;
+        width: 400px;
+        height: auto;
+        z-index: 10000000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        transition: opacity 0.3s ease;
+      }
+
+      .popup-content {
+        position: relative;
+      }
+
+      .popup .close-btn {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+    <div id="popup-error" class="popup hidden">
+      <div class="popup-content">
+        <span class="close-btn" onclick="hidePopup()">&times;</span>
+        <h2 id="popup-title-error">Title</h2>
+        <p id="popup-message-error">Message goes here</p>
+      </div>
+    </div>
+
+
+    <script>
+      function showPopup(title, message, duration = 9000) {
+        document.getElementById("popup-title-error").textContent = title;
+        document.getElementById("popup-message-error").textContent = message;
+        const popup = document.getElementById("popup-error");
+        popup.classList.remove("hidden");
+        if (duration > 0) {
+          setTimeout(() => {
+            hidePopup();
+          }, duration);
+        }
+      }
+
+      function hidePopup() {
+        document.getElementById("popup-error").classList.add("hidden");
+      }
+    </script>
